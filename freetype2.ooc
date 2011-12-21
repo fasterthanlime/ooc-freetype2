@@ -398,7 +398,7 @@ FTLibrary: cover from FT_Library {
     initFreeType: extern(FT_Init_FreeType) func@ -> Int
     done: extern(FT_Done_FreeType) func -> Int
     
-    newFace: extern(FT_New_Face) func (filepathname: const CString, face_index: Long, aface: FTFace*) -> Int
+    newFace: extern(FT_New_Face) func (filepathname: const CString, face_index: Long, aface: FTFaceRec*) -> Int
     newMemoryFace: extern(FT_New_Face_Memory) func (file_base: const UChar*, file_size: Long, face_index: Long, aface: FTFace*) -> Int
     openFace: extern(FT_Open_Face) func (args: const FTOpenArgs*, face_index: Long, face: FTFace*) -> Int
     
