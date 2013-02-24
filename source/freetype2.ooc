@@ -394,11 +394,11 @@ FTGlyphSlot: cover from FTGlyphSlotRec* {
 
 FTLibrary: cover from FT_Library {
     version: extern(FT_Library_Version) func (amajor, aminor, apatch: Int*)
-    
-    initFreeType: extern(FT_Init_FreeType) func@ -> Int
+
+    init: extern(FT_Init_FreeType) func@ -> Int
     done: extern(FT_Done_FreeType) func -> Int
     
-    newFace: extern(FT_New_Face) func (filepathname: const CString, face_index: Long, aface: FTFaceRec*) -> Int
+    newFace: extern(FT_New_Face) func (filepathname: const CString, face_index: Long, aface: FTFace*) -> Int
     newMemoryFace: extern(FT_New_Face_Memory) func (file_base: const UChar*, file_size: Long, face_index: Long, aface: FTFace*) -> Int
     openFace: extern(FT_Open_Face) func (args: const FTOpenArgs*, face_index: Long, face: FTFace*) -> Int
     
@@ -464,8 +464,8 @@ FTFace: cover from FTFaceRec* {
     getCharVariantIndex: extern(FT_Face_GetCharVariantIndex) func (charcode, variantSelector: ULong) -> UInt
     getCharVariantIsDefault: extern(FT_Face_GetCharVariantIsDefault) func (charcode, variantSelector: ULong) -> Int
     getVariantSelectors: extern(FT_Face_GetVariantSelectors) func -> UInt32*
-    getVariantSelectors: extern(FT_Face_GetVariantsOfChar) func (charcode: ULong) -> UInt32*
-    getVariantSelectors: extern(FT_Face_GetCharsOfVariant) func (variant: ULong) -> UInt32*
+    getVariantsOfChar: extern(FT_Face_GetVariantsOfChar) func (charcode: ULong) -> UInt32*
+    getCharsOfVariant: extern(FT_Face_GetCharsOfVariant) func (variant: ULong) -> UInt32*
     
     newSize: extern(FT_New_Size) func (size: FTSize*) -> Int
     
@@ -482,8 +482,8 @@ FTFace: cover from FTFaceRec* {
     isCIDKeyed?: extern(FT_IS_CID_KEYED) func -> Bool
     isTricky?: extern(FT_IS_TRICKY) func -> Bool
     
-    isBold?: func -> Bool { ((this@ style_flags)&FTStyleFlag bold)!=0 }
-    isItalic?: func -> Bool { ((this@ style_flags)&FTStyleFlag italic)!=0 }
+    isBold?: func -> Bool   { ((this@ style_flags) & FTStyleFlag bold)   != 0 }
+    isItalic?: func -> Bool { ((this@ style_flags) & FTStyleFlag italic) != 0 }
 }
 
 FTCharMapRec: cover from FT_CharMapRec {
@@ -530,3 +530,5 @@ FTOutlineGlyph: cover from FTOutlineGlyphRec* extends FTGlyph
 
 // computations
 ftMulDiv: extern(FT_MulDiv) func (a, b, c: Long) -> Long
+
+
