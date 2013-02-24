@@ -159,8 +159,6 @@ FTRenderer: cover from FT_Renderer
 
 FTFaceInternal: cover from FT_Face_Internal
 
-FT26Dot6: cover from FT_F26Dot6 extends Long
-
 FTMemoryRec: cover from struct FT_MemoryRec_ {
     user: Pointer
     alloc: Func (FTMemory, Long) -> Pointer
@@ -270,19 +268,19 @@ FTFixed: cover from FT_Fixed extends Long {
 operator * (l, r: FTFixed) -> FTFixed { l multiply(r) }
 operator / (l, r: FTFixed) -> FTFixed { l divide(r) }
 
-FTF2Dot14: cover from FT_F2Dot14 extends Short {
+FTF2Dot14: extern(FT_F2Dot14) cover from Short {
     toFloat: func -> Float {
         (this & ~0x3FFF) as Float / 64.0
     }
 }
 
-FTF26Dot6: cover from FT_F26Dot6 extends Long {
+FTF26Dot6: extern(FT_F26Dot6) cover from Long {
     toFloat: func -> Float {
         (this & ~0x3F) as Float / 64.0
     }
 }
 
-FTPos: cover from FT_Pos extends FTF26Dot6
+FTPos: extern(FT_Pos) cover from FTF26Dot6
 
 FTData: cover from FT_Data {
     pointer: Pointer
@@ -443,7 +441,7 @@ FTFace: cover from FTFaceRec* {
     done: extern(FT_Done_Face) func -> Int
     selectSize: extern(FT_Select_Size) func (strike_index: Int) -> Int
     requestSize: extern(FT_Request_Size) func (req: FTSizeRequest) -> Int
-    setCharSize: extern(FT_Set_Char_Size) func (char_width, char_height: FTF26Dot6, horz_resolution, vert_resolution: UInt) -> Int
+    setCharSize: extern(FT_Set_Char_Size) func (charWidth: FTF26Dot6, charHeight: FTF26Dot6, horzResolution: UInt, vert_resolution: UInt) -> Int
     setPixelSizes: extern(FT_Set_Pixel_Sizes) func (pixel_width, pixel_height: UInt) -> Int
     loadGlyph: extern(FT_Load_Glyph) func (glyph_index: UInt, load_flags: FTLoadFlag) -> Int
     loadChar: extern(FT_Load_Char) func (char_code: ULong, load_flags: FTLoadFlag) -> Int
