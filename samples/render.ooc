@@ -15,8 +15,8 @@ main: func {
     }
 
     dpi := 300
-    face setCharSize(0, 16*64, dpi, dpi)
-    glyphIndex := face getCharIndex('F' as ULong)
+    face setCharSize(16 * 64, 8 * 64, dpi, dpi)
+    glyphIndex := face getCharIndex('@' as ULong)
     face loadGlyph(glyphIndex, FTLoadFlag default)
     
     error = face@ glyph render(FTRenderMode normal)
@@ -29,6 +29,19 @@ main: func {
 }
 
 draw: func (bitmap: FTBitmap) {
-    "Should draw a %dx%d bitmap (%d pitch)" printfln(bitmap width, bitmap rows, bitmap pitch)
+    for (row in 0..bitmap rows) {
+        for (col in 0..bitmap width) {
+            val := bitmap buffer[row * bitmap pitch + col]
+            match {
+                case (val > 196) => "#"
+                case (val > 128) => "&"
+                case (val > 64)  => ":"
+                case (val > 32)  => "*"
+                case (val > 16)  => "."
+                case             => " "
+            } print()
+        }
+        println()
+    }
 }
 
