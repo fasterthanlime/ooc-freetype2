@@ -516,8 +516,8 @@ FTFace: cover from FTFaceRec* {
     isCIDKeyed?: extern(FT_IS_CID_KEYED) func -> Bool
     isTricky?: extern(FT_IS_TRICKY) func -> Bool
     
-    isBold?: func -> Bool   { ((this@ style_flags) & FTStyleFlag bold)   != 0 }
-    isItalic?: func -> Bool { ((this@ style_flags) & FTStyleFlag italic) != 0 }
+    isBold?: func -> Bool   { ((this@ styleFlags) & FTStyleFlag bold)   != 0 }
+    isItalic?: func -> Bool { ((this@ styleFlags) & FTStyleFlag italic) != 0 }
 }
 
 FTCharMapRec: cover from FT_CharMapRec {
