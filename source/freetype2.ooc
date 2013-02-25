@@ -428,21 +428,25 @@ FTLibrary: cover from FT_Library {
 }
 
 FTFaceRec: cover from FT_FaceRec {
-    num_faces, face_index: extern Long
-    face_flags: extern FTFaceFlag
-    style_flags: extern FTStyleFlag
+    numFaces: extern(num_faces) Long
+    faceIndex: extern(face_index) Long
+    faceFlags: extern(face_flags) FTFaceFlag
+    styleFlags: extern(style_flags) FTStyleFlag
     numGlyphs: extern(num_glyphs) Long
-    family_name, style_name: extern CString
-    num_fixed_sizes: extern Int
-    available_sizes: extern FTBitmapSize*
-    num_charmaps: extern Int
+    familyName: extern(family_name) CString
+    styleName: extern(style_name) CString
+    numFixedSizes: extern(num_fixed_sizes) Int
+    availableSizes: extern(available_sizes) FTBitmapSize*
+    numCharmaps: extern(num_charmaps) Int
     charmaps: extern FTCharMap*
     generic: extern FTGeneric
     bbox: extern FTBBox
-    units_per_EM: extern UShort
+    unitsPerEm: extern(units_per_EM) extern UShort
     ascender, descender, height: extern Short
-    max_advance_width, max_advance_height: extern Short
-    underline_position, underline_thickness: extern Short
+    maxAdvanceWidth: extern(max_advance_width) Short
+    maxAdvanceHeight: extern(max_advance_height) Short
+    underlinePosition: extern(underline_position) Short
+    underlineThickness: extern(underline_thickness) Short
     glyph: extern FTGlyphSlot
     size: extern FTSize
     charmap: extern FTCharMap
@@ -450,7 +454,7 @@ FTFaceRec: cover from FT_FaceRec {
     driver: extern FTDriver
     memory: extern FTMemory
     stream: extern FTStream
-    sizes_list: extern FTListRec
+    sizesList: extern(sizes_list) FTListRec
     autohint: extern FTGeneric
     extensions: extern Pointer
     internal: extern FTFaceInternal
@@ -508,7 +512,8 @@ FTFace: cover from FTFaceRec* {
 FTCharMapRec: cover from FT_CharMapRec {
     face: extern FTFace
     encoding: extern FTEncoding
-    platform_id, encoding_id: extern UShort
+    platformId: extern(platform_id) UShort
+    encodingId: extern(encoding_id) UShort
 }
 
 FTCharMap: cover from FTCharMapRec* {
@@ -525,8 +530,8 @@ FTGlyphRec: cover from FT_GlyphRec {
 FTGlyph: cover from FTGlyphRec* {
     copy: extern(FT_Glyph_Copy) func (target: FTGlyph*) -> Int
     transform: extern(FT_Glyph_Transform) func (matrix: FTMatrix*, delta: FTVector*) -> Int
-    getCBox: extern(FT_Glyph_Get_CBox) func (bbox_mode: FTGlyphBBoxMode, acbox: FTBBox*)
-    toBitmap: extern(FT_Glyph_To_Bitmap) func@ (render_mode: FTRenderMode, origin: FTVector*, destroy: Bool) -> Int
+    getCBox: extern(FT_Glyph_Get_CBox) func (bboxMode: FTGlyphBBoxMode, acbox: FTBBox*)
+    toBitmap: extern(FT_Glyph_To_Bitmap) func@ (renderMode: FTRenderMode, origin: FTVector*, destroy: Bool) -> Int
     done: extern(FT_Done_Glyph) func
 }
 
