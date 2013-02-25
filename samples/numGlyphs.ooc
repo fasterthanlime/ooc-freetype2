@@ -14,5 +14,5 @@ main: func {
         exit(1)
     }
 
-    "Number of glyphs: %d" printfln(face@ num_glyphs)
+    "Number of glyphs: %d" printfln(face@ numGlyphs)
 }

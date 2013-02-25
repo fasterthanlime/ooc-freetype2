@@ -112,7 +112,7 @@ FTLoadFlag: enum {
     linearDesign: extern(FT_LOAD_LINEAR_DESIGN)
     noAutohint: extern(FT_LOAD_NO_AUTOHINT)
     
-    /** target **/
+    /* target */
     normal: extern(FT_LOAD_TARGET_NORMAL)
     light: extern(FT_LOAD_TARGET_LIGHT)
     mono: extern(FT_LOAD_TARGET_MONO)
@@ -245,13 +245,13 @@ FTParameter: cover from FT_Parameter {
 }
 
 FTOpenArgs: cover from FT_Open_Args {
-    flags: extern FTOpenFlag
-    memory_base: extern const UChar*
-    memory_size: Long
+    flags: FTOpenFlag
+    memoryvBase: extern(memory_base) const UChar*
+    memorySize: extern(memory_size) Long
     pathname: CString
     stream: FTStream
     driver: FTModule
-    num_params: Int
+    numParams: extern(num_params) Int
     params: FTParameter
 }
 
@@ -276,10 +276,15 @@ FTFixed: cover from FT_Fixed extends Long {
     twoPi: static extern(FT_ANGLE_2PI) const FTFixed
     piOverTwo: static extern(FT_ANGLE_PI2) const FTFixed
     piOverFour: static extern(FT_ANGLE_PI4) const FTFixed
-}
 
-operator * (l, r: FTFixed) -> FTFixed { l multiply(r) }
-operator / (l, r: FTFixed) -> FTFixed { l divide(r) }
+    operator * (other: This) -> This {
+        this multiply(other)
+    }
+
+    operator / (other: This) -> This {
+        this divide(other)
+    }
+}
 
 FTF2Dot14: extern(FT_F2Dot14) cover from Short {
     toFloat: func -> Float {
@@ -303,12 +308,12 @@ FTData: cover from FT_Data {
 FTBitmap: cover from FT_Bitmap {
     init: extern(FT_Bitmap_New) func@
     
-    rows, width, pitch: extern Int
-    buffer: extern UChar*
-    num_grays: extern Short
-    pixel_mode: extern FTPixelMode
-    palette_mode: extern Char
-    palette: extern Pointer
+    rows, width, pitch: Int
+    buffer: UChar*
+    numGrays: extern(num_grays) Short
+    pixelMode: extern(pixel_mode) FTPixelMode
+    paletteMode: extern(palette_mode) Char
+    palette: Pointer
 }
 
 FTGlyphMetrics: cover from FT_Glyph_Metrics {
@@ -350,19 +355,22 @@ FTMatrix: cover from FT_Matrix {
 }
 
 FTGeneric: cover from FT_Generic {
-    data: extern Pointer
-    finalizer: Func (Pointer)
+    data: Pointer
+    finalizer: Pointer // Func (Pointer)
 }
 
 FTSizeMetrics: cover from FT_Size_Metrics {
-    x_ppem, y_ppem: extern UShort
-    x_scale, y_scale: extern FTFixed
-    ascender, descender, height, max_advance: extern FTPos
+    xPpem: extern(x_ppem) Short
+    yPpem: extern(y_ppem) Short
+    xScale: extern(x_scale) FTFixed
+    yScale: extern(y_scale) FTFixed
+    ascender, descender, height: FTPos
+    maxAdvance: extern(max_advance) FTPos
 }
 
 FTSizeRec: cover from FT_SizeRec {
-    face: extern FTFace
-    generic: extern FTGeneric
+    face: FTFace
+    generic: FTGeneric
     metrics: FTSizeMetrics
     internal: FTSizeInternal
 }
@@ -387,7 +395,7 @@ FTGlyphSlotRec: cover from FT_GlyphSlotRec {
     bitmap_left: extern Int
     bitmap_top: extern Int
     outline: extern FTOutline
-    num_subglyphs: extern UInt
+    numSubglyphs: extern(num_subglyphs) UInt
     subglyphs: extern FTSubGlyph
     control_data: extern Pointer
     control_len: extern Long
@@ -423,7 +431,7 @@ FTFaceRec: cover from FT_FaceRec {
     num_faces, face_index: extern Long
     face_flags: extern FTFaceFlag
     style_flags: extern FTStyleFlag
-    num_glyphs: extern Long
+    numGlyphs: extern(num_glyphs) Long
     family_name, style_name: extern CString
     num_fixed_sizes: extern Int
     available_sizes: extern FTBitmapSize*
