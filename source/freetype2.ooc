@@ -403,15 +403,15 @@ FTGlyphSlotRec: cover from FT_GlyphSlotRec {
     advance: extern FTVector
     format: extern FTGlyphFormat
     bitmap: extern FTBitmap
-    bitmap_left: extern Int
-    bitmap_top: extern Int
+    bitmapLeft: extern(bitmap_left) Int
+    bitmapTop: extern(bitmap_top) Int
     outline: extern FTOutline
     numSubglyphs: extern(num_subglyphs) UInt
     subglyphs: extern FTSubGlyph
-    control_data: extern Pointer
-    control_len: extern Long
-    lsb_delta: extern FTPos
-    rsb_delta: extern FTPos
+    controlData: extern(control_data) Pointer
+    controlLen: extern(control_len) Long
+    lsbDelta: extern(lsb_delta) FTPos
+    rsbDelta: extern(rsb_delta) FTPos
     other: extern Pointer
     internal: extern FTSlotInternal
 }

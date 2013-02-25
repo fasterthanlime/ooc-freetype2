@@ -15,4 +15,6 @@ main: func {
     }
 
     "Number of glyphs: %d" printfln(face@ numGlyphs)
+
+    ft done()
 }

@@ -26,6 +26,8 @@ main: func {
     }
 
     draw(face@ glyph@ bitmap)
+
+    ft done()
 }
 
 draw: func (bitmap: FTBitmap) {

@@ -30,5 +30,7 @@ main: func {
         cbox xMax toFloat(),
         cbox yMax toFloat()
     )
+
+    ft done()
 }
 
