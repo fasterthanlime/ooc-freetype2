@@ -55,6 +55,19 @@ FTPixelMode: extern(FT_Pixel_Mode) enum {
     gray4: extern(FT_PIXEL_MODE_GRAY4)
     lcd: extern(FT_PIXEL_MODE_LCD)
     lcdV: extern(FT_PIXEL_MODE_LCD_V)
+
+    toString: func -> String {
+        match this {
+            case This none  => "none"
+            case This mono  => "mono"
+            case This gray  => "gray"
+            case This gray2 => "gray2"
+            case This gray4 => "gray4"
+            case This lcd   => "lcd"
+            case This lcdV  => "lcdV"
+            case => "<unknown>"
+        }
+    }
 }
 
 FTGlyphFormat: extern(FT_Glyph_Format) enum {
