@@ -76,6 +76,17 @@ FTGlyphFormat: extern(FT_Glyph_Format) enum {
     bitmap: extern(FT_GLYPH_FORMAT_BITMAP)
     outline: extern(FT_GLYPH_FORMAT_OUTLINE)
     plotter: extern(FT_GLYPH_FORMAT_PLOTTER)
+
+    toString: func -> String {
+        match this {
+            case This none      => "none"
+            case This composite => "composite"
+            case This bitmap    => "bitmap"
+            case This outline   => "outline"
+            case This plotter   => "plotter"
+            case => "<unknown>"
+        }
+    }
 }
 
 FTOpenFlag: enum {
