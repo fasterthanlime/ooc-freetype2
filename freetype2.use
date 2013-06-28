@@ -14,6 +14,8 @@ version (android || ios) {
     Includes: ft2build.h, freetype/freetype.h
 
     version (android) {
+        AndroidLibs: c_freetype2
+        AndroidIncludePaths: ../c_freetype2/include
         Libs: -lfreetype2
     }
 }
