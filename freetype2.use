@@ -1,6 +1,20 @@
 Name: FreeType
 Description: Library to easily work with fonts
-Pkgs: freetype2
 Version: 2.3.12
 SourcePath: source
-Includes: ft2build.h, freetype/freetype.h
+
+# Desktop platforms
+version (linux || windows || (apple && !ios)) {
+    Pkgs: freetype2
+    Includes: ft2build.h, freetype/freetype.h
+}
+
+# Mobile platforms
+version (android || ios) {
+    Includes: ft2build.h, freetype/freetype.h
+
+    version (android) {
+        Libs: -lfreetype2
+    }
+}
+
