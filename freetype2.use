@@ -16,7 +16,6 @@ version (android || ios) {
     version (android) {
         AndroidLibs: c_freetype2
         AndroidIncludePaths: ../c_freetype2/include
-        Libs: -lfreetype2
     }
 }
 
