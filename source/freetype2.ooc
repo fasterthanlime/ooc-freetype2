@@ -1,11 +1,13 @@
 use freetype2
-include freetype/ftsystem
-include freetype/ftglyph
-include freetype/ftsizes
-include freetype/fttypes
-include freetype/ftlist
-include freetype/fttrigon
-include freetype/ftbitmap
+include ft2build
+include .FT_FREETYPE_H
+include .FT_SYSTEM_H
+include .FT_GLYPH_H
+include .FT_SIZES_H
+include .FT_TYPES_H
+include .FT_LIST_H
+include .FT_TRIGONOMETRY_H
+include .FT_BITMAP_H
 
 FTEncoding: extern(FT_Encoding) enum {
     /* deprecated values have been exlcuded */
