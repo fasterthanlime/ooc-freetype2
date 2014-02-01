@@ -109,7 +109,7 @@ FTSizeRequestType: extern(FT_Size_Request_Type) enum {
 }
 
 FTLoadFlag: enum {
-    default: extern(FT_LOAD_DEFAULT)
+    default_: extern(FT_LOAD_DEFAULT)
     noScale: extern(FT_LOAD_NO_SCALE)
     noHinting: extern(FT_LOAD_NO_HINTING)
     render: extern(FT_LOAD_RENDER)
@@ -143,7 +143,7 @@ FTRenderMode: extern(FT_Render_Mode) enum {
 }
 
 FTKerningMode: extern(FT_Kerning_Mode) enum {
-    default: extern(FT_KERNING_DEFAULT)
+    default_: extern(FT_KERNING_DEFAULT)
     unfitted: extern(FT_KERNING_UNFITTED)
     unscaled: extern(FT_KERNING_UNSCALED)
 }
@@ -152,7 +152,7 @@ FTSubGlyphFlag: enum {
     argsAreWords: extern(FT_SUBGLYPH_FLAG_ARGS_ARE_WORDS)
     argsAreXYValues: extern(FT_SUBGLYPH_FLAG_ARGS_ARE_XY_VALUES)
     roundXYToGrid: extern(FT_SUBGLYPH_FLAG_ROUND_XY_TO_GRID)
-    Scale: extern(FT_SUBGLYPH_FLAG_SCALE)
+    scale: extern(FT_SUBGLYPH_FLAG_SCALE)
     xyScale: extern(FT_SUBGLYPH_FLAG_XY_SCALE)
     twoByTwo: extern(FT_SUBGLYPH_FLAG_2X2)
     useMyMetrics: extern(FT_SUBGLYPH_FLAG_USE_MY_METRICS)
