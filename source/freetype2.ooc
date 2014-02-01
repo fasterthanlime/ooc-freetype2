@@ -159,7 +159,7 @@ FTSubGlyphFlag: enum {
 }
 
 FTFSTypeFlag: enum {
-    installableEmbedding: extern(FT_FSTYPE_INSTALLABE_EMBEDDING)
+    installableEmbedding: extern(FT_FSTYPE_INSTALLABLE_EMBEDDING)
     restrictedLicenseEmbedding: extern(FT_FSTYPE_RESTRICTED_LICENSE_EMBEDDING)
     previewAndPrintEmbedding: extern(FT_FSTYPE_PREVIEW_AND_PRINT_EMBEDDING)
     editableEmbedding: extern(FT_FSTYPE_EDITABLE_EMBEDDING)
