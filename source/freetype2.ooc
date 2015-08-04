@@ -9,8 +9,8 @@ include .FT_LIST_H
 include .FT_TRIGONOMETRY_H
 include .FT_BITMAP_H
 
-FTEncoding: extern(FT_Encoding) enum {
-    /* deprecated values have been exlcuded */
+FTEncoding: enum {
+    /* deprecated values have been excluded */
     none: extern(FT_ENCODING_NONE)
     msSymbol: extern(FT_ENCODING_MS_SYMBOL)
     unicode: extern(FT_ENCODING_UNICODE)
@@ -27,7 +27,7 @@ FTEncoding: extern(FT_Encoding) enum {
     appleRoman: extern(FT_ENCODING_APPLE_ROMAN)
 }
 
-FTFaceFlag: extern(FT_Long) enum {
+FTFaceFlag: enum {
     scalable: extern(FT_FACE_FLAG_SCALABLE)
     fixedSizes: extern(FT_FACE_FLAG_FIXED_SIZES)
     fixedWidth: extern(FT_FACE_FLAG_FIXED_WIDTH)
@@ -44,12 +44,12 @@ FTFaceFlag: extern(FT_Long) enum {
     tricky: extern(FT_FACE_FLAG_TRICKY)
 }
 
-FTStyleFlag: extern(FT_Long) enum {
+FTStyleFlag: enum {
     italic: extern(FT_STYLE_FLAG_ITALIC)
     bold: extern(FT_STYLE_FLAG_BOLD)
 }
 
-FTPixelMode: extern(FT_Pixel_Mode) enum {
+FTPixelMode: enum {
     none: extern(FT_PIXEL_MODE_NONE)
     mono: extern(FT_PIXEL_MODE_MONO)
     gray: extern(FT_PIXEL_MODE_GRAY)
@@ -72,7 +72,7 @@ FTPixelMode: extern(FT_Pixel_Mode) enum {
     }
 }
 
-FTGlyphFormat: extern(FT_Glyph_Format) enum {
+FTGlyphFormat: enum {
     none: extern(FT_GLYPH_FORMAT_NONE)
     composite: extern(FT_GLYPH_FORMAT_COMPOSITE)
     bitmap: extern(FT_GLYPH_FORMAT_BITMAP)
@@ -99,7 +99,7 @@ FTOpenFlag: enum {
     params: extern(FT_OPEN_PARAMS)
 }
 
-FTSizeRequestType: extern(FT_Size_Request_Type) enum {
+FTSizeRequestType: enum {
     nominal: extern(FT_SIZE_REQUEST_TYPE_NOMINAL)
     realDim: extern(FT_SIZE_REQUEST_TYPE_REAL_DIM)
     bbox: extern(FT_SIZE_REQUEST_TYPE_BBOX)
@@ -133,7 +133,7 @@ FTLoadFlag: enum {
     lcdV: extern(FT_LOAD_TARGET_LCD_V)
 }
 
-FTRenderMode: extern(FT_Render_Mode) enum {
+FTRenderMode: enum {
     normal: extern(FT_RENDER_MODE_NORMAL)
     light: extern(FT_RENDER_MODE_LIGHT)
     mono: extern(FT_RENDER_MODE_MONO)
@@ -142,7 +142,7 @@ FTRenderMode: extern(FT_Render_Mode) enum {
     max: extern(FT_RENDER_MODE_MAX)
 }
 
-FTKerningMode: extern(FT_Kerning_Mode) enum {
+FTKerningMode: enum {
     default_: extern(FT_KERNING_DEFAULT)
     unfitted: extern(FT_KERNING_UNFITTED)
     unscaled: extern(FT_KERNING_UNSCALED)
@@ -167,7 +167,7 @@ FTFSTypeFlag: enum {
     bitmapEmbeddingOnly: extern(FT_FSTYPE_BITMAP_EMBEDDING_ONLY)
 }
 
-FTGlyphBBoxMode: extern(FT_Glyph_BBox_Mode) enum {
+FTGlyphBBoxMode: enum {
     unscaled: extern(FT_GLYPH_BBOX_UNSCALED)
     subpixels: extern(FT_GLYPH_BBOX_SUBPIXELS)
     gridfit: extern(FT_GLYPH_BBOX_GRIDFIT)
